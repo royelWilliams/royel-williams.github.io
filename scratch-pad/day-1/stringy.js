@@ -15,8 +15,8 @@
 function length(string) {
     // YOUR CODE BELOW HERE //
     
-
-
+// you can simply call the string that is in the parameters and then call a .length
+ return string.length;
     // YOUR CODE ABOVE HERE //
 }
 
@@ -25,9 +25,9 @@ function length(string) {
  */
 function toLowerCase(string) {
     // YOUR CODE BELOW HERE //
-
-
-
+// call the string and use the toLowerCase to make all of the strings lower
+var makeSmall = string.toLowerCase();
+return makeSmall;
     // YOUR CODE ABOVE HERE //
 }
 
@@ -36,9 +36,9 @@ function toLowerCase(string) {
  */
 function toUpperCase(string) {
     // YOUR CODE BELOW HERE //
-
-
-
+// use toUpperCase to make all of the strings upper
+var makeBig = string.toUpperCase();
+return makeBig
     // YOUR CODE ABOVE HERE //
 }
 
@@ -57,9 +57,14 @@ function toUpperCase(string) {
  */
 function toDashCase(string) {
     // YOUR CODE BELOW HERE //
-
-
-
+    // split the string 
+    var spliter = string. split(' ');
+    // join the string into a whole again using dashes 
+    var joining = spliter.join('-')
+// make the string all in one case
+var small = joining.toLowerCase();
+// return everything put together 
+return small;
     // YOUR CODE ABOVE HERE //
 }
 
@@ -76,10 +81,17 @@ function toDashCase(string) {
  *      ensure uppercase and lowercase can be compared equally?
  */
 function beginsWith(string, char) {
-    // YOUR CODE BELOW HERE //
-
-    
-
+     // YOUR CODE BELOW HERE //
+// lowerCase everything so that we wont have any issues down the line
+var lower = string.toLowerCase();
+ // get access to the first character in each string and compare them using a if statement
+//
+if(lower[0] !== char.toLowerCase()){
+return false
+}
+else{
+    return true;
+}
     // YOUR CODE ABOVE HERE //
 }
 
@@ -97,7 +109,17 @@ function beginsWith(string, char) {
  */
 function endsWith(string, char) {
     // YOUR CODE BELOW HERE //
-
+// make all of the characters in the same case
+var later = string.toLowerCase();
+  console.log(later[later.length - 1]);
+// find the last character in the string, use it in if statement to prove that the last letter does equal the character given 
+if (later[later.length- 1] === char.toLowerCase()){
+  console.log(later[later.length- 1]);
+    return true;
+}
+else{ 
+  return false; 
+}
 
 
     // YOUR CODE ABOVE HERE //
@@ -111,8 +133,8 @@ function endsWith(string, char) {
 function concat(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
 
-
-
+// combine string one with string two and return them both 
+return stringOne. concat(stringTwo);
     // YOUR CODE ABOVE HERE //
 }
 
@@ -128,8 +150,11 @@ function concat(stringOne, stringTwo) {
  */
 function join(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-    var args = Array.from(arguments);
-
+   
+// combine the strings using a .join ()
+var next = Array.from(arguments);
+next.join('');
+return next.join('');
 
     // YOUR CODE ABOVE HERE //
 }
@@ -145,9 +170,14 @@ function join(stringOne, stringTwo) {
  */
 function longest(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
-
-
+// compare string one to string  two and make sure they are different 
+if(stringOne.length > stringTwo.length){
+    return stringOne;
+}
+// else return the other string  
+else{
+    return stringTwo;
+}
     // YOUR CODE ABOVE HERE //
 }
 
@@ -160,7 +190,20 @@ function longest(stringOne, stringTwo) {
  */
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+    // lowrcase both strings so they are in the same case when coding 
+    var string1 = stringOne.toLowerCase();
+    var string2 = stringTwo.toLowerCase();
+    // make a if statement  using the .localeCompare method returns a number indicating
+    // whether a reference string comes before, or after, or is the same as the given string in sort order. 
+    if(string2 > string1){
+      return 1;
+    }
+else if(string1 > string2){
+  return -1;
+}    
+    else{
+      return 0;
+    }
 
 
     // YOUR CODE ABOVE HERE //
@@ -176,7 +219,19 @@ function sortAscending(stringOne, stringTwo) {
  */
 function sortDescending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+    //make sure both of the strings are in the same case before continueing to make things easier 
+    var string1 = stringOne.toLowerCase();
+    var string2 = stringTwo.toLowerCase();
+    // there should be a if statement to test which is hidher vs which is lower and the else being the 0 
+    if(string1 > string2){
+      return 1;
+    }
+else if(string2 > string1){
+  return -1;
+}    
+    else{
+      return 0;
+    }
 
 
 

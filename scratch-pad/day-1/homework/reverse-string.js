@@ -22,8 +22,9 @@
 function reverseString(input) {
     // YOUR CODE GOES BELOW HERE //
     
-    
-    
+    // make sure to reverse loop the input 
+    //you can access each index after the loop 
+    //
     
     // YOUR CODE GOES ABOVE HERE //
 }
