@@ -21,11 +21,17 @@
 
 function reverseString(input) {
     // YOUR CODE GOES BELOW HERE //
-    
+    // make sure the input is a string 
     // make sure to reverse loop the input 
     //you can access each index after the loop 
-    //
+    //return the result 
+   var result  = ""
+    for(let i = input.length-1; i >= 0; i--){
+      result += input[i];
+    }
+      return result; 
     
+    console.log(result);
     // YOUR CODE GOES ABOVE HERE //
 }
 
