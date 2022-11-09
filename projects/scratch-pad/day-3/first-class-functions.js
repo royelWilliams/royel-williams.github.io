@@ -14,7 +14,14 @@
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
     
-    
+    return function(number){
+        if(number > base){
+            return true 
+        }
+        else{
+            return false
+        }
+    }
     
     
     // YOUR CODE ABOVE HERE //
@@ -27,9 +34,15 @@ function createGreaterThanFilter(base) {
  */
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
+    return function(number){
+        if(number < base){
+            return true 
+        }
+        else{
+            return false
+        }
     
-    
-    
+    }
     
     // YOUR CODE ABOVE HERE //
 }
@@ -41,9 +54,18 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
+
+    var decent = startsWith.toLowerCase();
+// //returning a function to test if starts with is with a given character by using a if statement 
+return function(string){
+
+    var str  = string.toLowerCase();
+    if(decent === str[0]){
+    return true;
+}
+else {return false;}
+}
+
     
     // YOUR CODE ABOVE HERE //
 }
@@ -55,7 +77,16 @@ function createStartsWithFilter(startsWith) {
  */
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
+    var decent = endsWith.toLowerCase();
+    // //returning a function to test if starts with is with a given character by using a if statement 
+    return function(string){
     
+        var str= string.toLowerCase();
+        if(decent === str[str.length-1]){
+        return true;
+    }
+    else {return false;}
+    }
     
     
     
@@ -71,6 +102,12 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
+    var sam = [];
+    for(var i = 0; i < strings.length; i++ ){
+       // modify(strings[i]);
+         sam.push(modify(strings[i]));
+}
+    return sam;
     
     
     
@@ -89,7 +126,14 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
-    
+    var ant = 0;
+    for(var i = 0; i < strings.length; i++){
+       // test(strings[i]);
+        if(test(strings[i])){
+       ant++
+    }
+}
+    return strings.length === ant;
     
     
     
