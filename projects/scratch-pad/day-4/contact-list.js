@@ -34,24 +34,67 @@
  */
 
 // YOUR CODE GOES BELOW HERE //
-function makeContact(id, nameFirst, nameLast) {
-
-} 
-
-
+function makeContact(id, nameFirst, nameLast){
+    return { id: id, nameFirst :nameFirst,nameLast: nameLast}
+   
+}        
+   //should take the full name string and return contact obj
+   // loop over the contacts array 
+   //use a if statement and the splice statement
+   //loop over the contact array use a if statement
 function makeContactList() {
-    /*
-     * You need something here to hold contacts. See length api for a hint:
-     */
-    var contacts;
-    
-    return {
-        // we implemented the length api for you //
-        length: function() {
-            return contacts.length;
-        }
-    }
+   /*
+    * You need something here to hold contacts. See length api for a hint:
+    */
+   var contacts = [];
+   // contacts.length;
+   //  contacts()
+   // contacts()
+   // removeContacts()
+   
+   // function printAllContactNames(){}
+   return {
+       // we implemented the length api for you //
+       length: function() {
+           return contacts.length;
+       },
+   contacts: function(contact){
+       contacts.push(contact);
+   },
+
+addContact: function(contact){
+   contacts.push(contact);
+},
+ 
+   
+   findContact: function(fullName){
+       for(var i =0; i < contacts.length; i++){
+           if(contacts[i].nameFirst + " " + contacts[i].nameLast === fullName){
+               return contacts[i];
+           }
+       }
+       return undefined;
+   },
+removeContact: function(contact){
+   //loop over arrays
+   for(var i = 0; i < contacts.length; i++){
+       if(contacts[i] === contact){
+           contacts.splice(i,1);
+       }
+   }
+},
+printAllContactNames: function(){
+   var ok = [];
+   for(var i = 0 ; i < contacts.length; i++){
+       ok.push(contacts[i].nameFirst + " " + contacts[i].nameLast)
+   }return ok.join("\n")
 }
+}
+}
+
+
+
+
 
 
 

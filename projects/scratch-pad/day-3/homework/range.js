@@ -23,19 +23,21 @@
  */
 function range(start, end) {
 //     // YOUR CODE GOES BELOW HERE //
-    var arr =[];
+    // make somewhere to push everything 
+    var here = [];
 if (start < end){
     for (var i = start; i <= end; i++){
-        arr.push(i);
+        here.push(i);
     }
 }
 // if the start value is bigger 
 else{ 
     for(var i = start; i >= end; i--){
-        arr.push(i);
+        here.push(i);
     }
 }
-return arr;
+return here;
+    
 
 //start < end? var i = start; i <= end; i++ : var i = start; i >= end; i--
     
