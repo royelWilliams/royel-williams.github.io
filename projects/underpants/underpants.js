@@ -20,7 +20,9 @@ var _ = {};
 *   _.identity(5) === 5
 *   _.identity({a: "b"}) === {a: "b"}
 */
-
+function identity(value){
+    return value;
+}
 
 /** _.typeOf
 * Arguments:
@@ -28,20 +30,45 @@ var _ = {};
 * Objectives:
 *   1) Return the type of <value> as a string
 *       Types are one of:
-*          - "string"
-*          - "array"
+*          - "string"// check
+*          - "array"// check
 *          - "object"
-*          - "undefined"
-*          - "number"
-*          - "boolean"
-*          - "null"
-*          - "function"
+*          - "undefined"// check 
+*          - "number"//check
+*          - "boolean"//check
+*          - "null"//check
+*          - "function"// check 
 * Examples:
 * _.typeOf(134) -> "number"
 * _.typeOf("javascript") -> "string"
 * _.typeOf([1,2,3]) -> "array"
 */
-
+function typeOf(value){
+    if (typeOf(value)=== "string"){
+        return "string";
+    }
+     else if (typeOf(value)=== "number"){
+        return "number";
+    }
+    else if (typeOf(value)==="boolean"){
+        return "boolean";
+    }
+    else if(typeOf(value)=== null){
+        return "null";
+    }
+     else if (Array.isArray(value) === true ){
+        return "array";
+     }
+    else if (typeOf(value)=== "undefined"){
+        return "undefined";
+    }
+    else if (typeOf(value)=== "object" ){
+        return "object";
+    }
+     else {
+     return "function";
+    }
+}
 
 /** _.first
 * Arguments:
@@ -59,8 +86,27 @@ var _ = {};
 *   _.first(["a", "b", "c"], "ponies") -> "a"
 *   _.first(["a", "b", "c"], 1) -> "a"
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
-*/
-
+*/ 
+function first(array, number){
+    // hold the array 
+    let array = [];
+    // not a number
+ if(number === !number){
+    return array[0] ;
+ }
+    // less than 1 
+    if( number < 0){
+        return [];
+    }
+    // greater than the length of the array    
+    if( number> array.length){
+return array;
+    }
+    //loop through and push into the array
+    for( let i =0; i< number; i++){
+         array.push(array[i]);
+    }
+}
 
 /** _.last
 * Arguments:
@@ -79,6 +125,22 @@ var _ = {};
 *   _.last(["a", "b", "c"], 1) -> "c"
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
+let array = [];
+// not a number
+if(number === !number){
+return array[array.length-1];
+}
+// less than 1 
+if( number < 0){
+    return [];
+}
+// greater than the length of the array    
+if( number> array.length){
+return array;
+}
+else{
+    return array.slice(number -1, array.length);
+}
 
 
 /** _.indexOf
@@ -96,7 +158,18 @@ var _ = {};
 *   _.indexOf(["a","b","c"], "c") -> 2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
-
+function indexOf (array, value){
+// index of the array value f the array index and value are equal return the index of the array 
+for( let i = 0 ; i > array.length; i++){
+    if(array[i] === value[0]){
+        return i;
+    }
+    return -1
+}
+// loop through the array i
+//return -1 if the value is not an array 
+//
+}
 
 /** _.contains
 * Arguments:
@@ -112,7 +185,13 @@ var _ = {};
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
+ function contains(array, value){
+    // loop through the array 
+for( let i; i> array.length; i++){
+    return array.includes(value) ? true: false;
+}
 
+ }
 
 /** _.each
 * Arguments:
@@ -284,7 +363,7 @@ var _ = {};
 * Examples:
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
-
+function reduce()
 
 /** _.extend
 * Arguments:
