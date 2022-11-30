@@ -83,31 +83,36 @@ _.typeOf= function(value){
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */ 
 _.first = function(array, number){
-//      let arr = [];
-  //if number is not a number (!number)  and if number is not 1 
-    if(number === 1 || !number){
-        return array[0];
-    }
-   // if number is less than 0 then it is not needed (edgecase)
-// if array is not an array
-    else if(number < 0 || !Array.isArray(array)){
-        return [];
-    } 
-     // if number is greater than the lenngth of the array 
-     else if(number > array.length){
-        // you will still have all of the elements so just return the array 
-         return array;
-     }
     
-    else {
-        //pushing elements through a loop 
-        for(var i = 0; i < number; i++){
-            //return the index arrays
-         arr.push(array[i]);
-        }
-     return arr;
-    }
+// not a  array
+// not a number 
+//greater than a array 
+// negative number 
+let arr = [];
+//if number is not a number (!number)  and if number is not 1 
+  if(number === 1 || !number){
+      return array[0];
+  }
+ 
+  else if(number < 0 || !Array.isArray(array)){
+      return [];
+  } 
+   
+   else if(number > array.length){
+      // you will still have all of the elements so just return the array 
+       return array;
+   }
+  
+  else {
+      //pushing elements through a loop 
+      for(var i = 0; i < number; i++){
+          //return the index arrays
+       arr.push(array[i]);
+      }
+   return arr;
+  }
 }
+
 
 /** _.last
 * Arguments:
@@ -291,26 +296,36 @@ return arr;
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
-
-
-/** _.partition
-* Arguments:
-*   1) An array
-*   2) A function
-* Objectives:
-*   1) Call <function> for each element in <array> passing it the arguments:
-*       element, key, <array>
-*   2) Return an array that is made up of 2 sub arrays:
-*       0) An array that contains all the values for which <function> returned something truthy
-*       1) An array that contains all the values for which <function> returned something falsy
-* Edge Cases:
-*   1) This is going to return an array of arrays.
-* Examples:
-*   _.partition([1,2,3,4,5], function(element,index,arr){
-*     return element % 2 === 0;
-*   }); -> [[2,4],[1,3,5]]
+_. reject = function(array, func){
+var arr= [];
+//iterate through collection with a loop 
+for(var i =0; i < array.length;i++){
+    //call the input func on each element 
+    if(func(array[i], i, array) === false ){
+        arr.push(array[i])
+    }
 }
-*/
+    //func(current element, curent index, array)
+
+return arr;
+
+}
+_.partition = function(array, func){
+// have an array for true false and original values 
+var normal  = [];
+var truthy = [];
+   var falsy = [];
+
+    _.each(array,function(element,key,array){
+ if(func(element,key,array) === true){
+    truthy.push(array[key]);
+ }else {
+  falsy.push(array[key])
+}
+});
+normal.push(truthy,falsy);
+return normal;
+};
 
 
 /** _.map
@@ -328,7 +343,22 @@ return arr;
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
-
+_.map = function(collection, func){
+    let newArray = [];
+    // check if it is an array or a object 
+    if(Array.isArray(collection)){
+        // loop through the collection
+        for( let i =0; i < collection.length; i++){
+            newArray.push(func(collection[i],i,collection))
+        }
+    }
+    else{
+        for(let key in collection){
+            newArray.push(func(collection[key], key,collection));
+        }
+    }
+    return newArray;
+}
 
 /** _.pluck
 * Arguments:
@@ -340,7 +370,11 @@ return arr;
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
-
+_. pluck = function(array, property){
+    return _.map(array, function(index){
+return index[property];
+    })
+}
 
 /** _.every
 * Arguments:
@@ -362,7 +396,48 @@ return arr;
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
+_. every = function(collection,func){
+if(func === undefined){
+    //determine if it is an array
+if(Array.isArray(collection)){
+//iterate through a loop 
+for(let i = 0; i < collection.length; i++){
+if(!collection[i]){
+ //determine if collection[i] it is a falty datatype    
+  return false;
+}
+}
+}
+else{
+    for(let key in collection){
+        if(!collection[key]){
+            return false;
+        }
+    }
+}
+}
+else{
+//else a function was involved 
+if(Array.isArray(collection)){
+    //iterate through the collection
+    for(let i = 0;i < collection.length;i++){
+        //what am i determining
+        if(func(collection[i], i, collection) === false){
+            return false;
+        }
+    }
+}else{
+    //iterate through a object
+    for(let key in collection){
+        if(func(collection[key], key, collection)=== false){
+            return false;
+        }
+    }
 
+}
+}
+return true;
+}
 
 /** _.some
 * Arguments:
@@ -384,6 +459,24 @@ return arr;
 *   _.some([1,3,5], function(e){return e % 2 === 0}) -> false
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
+_.some = function(collection, func){
+    let result = false;
+    if(func){
+        _.map(collection,function(element,index,array){
+            if(func(element,index,array) === true){
+               return  result = true;
+            }
+        });
+    } else{
+        _.map(collection,function(element){
+            if(element === true){
+              return result = true; 
+            }
+        });
+
+    }
+    return result;
+};
 
 
 /** _.reduce
@@ -404,8 +497,25 @@ return arr;
 * Examples:
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
-
-
+_.reduce = function(array, func, seed){
+    let result;
+    if(seed === undefined){
+        result = array[0];
+        // iterate through the array 
+        for(let i = 1; i < array.length; i++){
+result = func(result, array[i], i, array);
+        }
+    }else { 
+        result = seed;
+    //iterates through array 
+for(let i = 0; i < array.length; i++){
+   //assign result to the  result of the invoking callback function 
+   result = func(result, array[i], i,array);
+}
+}
+return result;
+}
+    
 /** _.extend
 * Arguments:
 *   1) An Object
@@ -420,6 +530,16 @@ return arr;
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+_.extend = function(obj,...object2){
+    for(var i = 0; i < object2.length; i++){
+        // use a for in loop to apply everything from    
+          for(let key in object2[i]){
+            obj[key] = object2[i][key];
+        }
+        }
+           return obj;
+       };
+
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////

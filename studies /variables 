@@ -1,91 +1,81 @@
 /**
+*VARIABES:
+*WHAT IS A VARIABLE??
 *
+*In JavaScript, a variable stores data that can be changed later on.Always declare JavaScript variables with var,let, orconst.
+*The var keyword is used in all JavaScript code from 1995 to 2015.The let and const keywords were added to JavaScript in 2015. 
+*If you want your code to run in older browsers, you must use var.
 *
+*VAR LET  CONST
 *
 *
 *
+* var, let and const are extremely important things to think about when coding as they are basically the bread and butter of everything that is going to happen after they are declared 
+* you must remember what each of them stands for and the limits that are set when using them in your code
 *
+*var 
+* - can be redeclared with the same name 
+* -can take a global or functional scope
+* 
+*  declaration & Assignment:
+* when assigning using the var keyword remember that things can be assigned the same thing in and out of a global 
+* scope which can cause confusion later because var does not serve as a block scoped variable 
+*  assigning var:
+* var age; //is the var variable being declared. this is simply when you add a keyword to the var variable and 
+* 
 *
 *
+*   let
+* - can't be redeclared 
+* - can be reassigned 
+* -must be initalized with a value
+* -block scoped(variable can not be called outside of its block of code)
+* declaration & Assignment:
+* when assigning the let variable similarly to var you van simply define it without assigning it to a definate value.
+* however let is different from the var keyword in the sende that it is blocked scoped meaning that it can not be accessed outside of a score that is not global
+* for instance if you are using a let keyword inside of a function you will not be able to continue to reach that keyword 
+* if 
 *
 *
 *
+*const  * -can't be redeclared(const is short for constant so the numbers shouldnt change)
+
+* -can't be reassigned (const shouldnt change)
+* -can be modified but not initialized 
+* -block scoped(variable can not be called outside its block of code)
 *
 *
+
+*  // 1. declaration - when declaring a variable it is important to use of  the keywords var, let, or const. 
+*they are all good and useful, however each of them has their own little kink.
 *
+*  var myName;
 *
+*  /*
+*   * At the declaration phase, the variable myName is undefined because we have NOT initialized
+*   * it to anything- this also means if you call this undefined variable it will show an error that said variable has not been initlized 
+*   */
+*  console.log(myName); // prints => undefined
 *
+*  // 2. initialization or assignment //
+*  myName = 'Sam';
+*  console.log(myName); // prints => Sam
 *
+*  // 3. re-assignment - you can reassign a variable to say something different if needed although this is usually used when u use the var keyword 
+*  when you use the const keyword what is written is more set in stone becasues it van not be manipulated//
+*  myName = 'Harry';
+*  console.log(myName); // prints => Harry
+* // NOTE: We can assign and re-assign anything to a variable - when doing this it can lead to other issues in the code  //
+* var myTime = "time";// this would be the original declaration and assignment 
 *
+* var myTime = 8;// re-assigning  time to equal a number  
 *
+*   var myTime = true;// re-assigning the number to equal a boolean 
 *
+* myTime = "somTHING"; // and re-assigning the boolean to equal a string again 
 *
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
+*This process can go on  and on when using the var keyword it is actually one of the easiest ways to reassign a variable.
+* 
 *
 */
 
