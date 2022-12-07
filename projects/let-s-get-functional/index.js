@@ -133,63 +133,33 @@ var _ = require('underbar');
     }
     
     
-    var topThreeTags = function(array){
-        // create an array to hold all tags in
-         let arrTags = []
-    // use reduce to reduuce down our tags into one array
-    
-    let newTags =  _.reduce(array,function(prev,curr,i){
-       // create a condition for the case of us having a tags array
-         if(curr.tags !== undefined){
-             // push the tags into an array so it can be an array of array tags
-             arrTags.push(curr.tags)
-             // flatten the nested arrays
-         }
-         // concat the tags into one big array of tags
-          return  [].concat(...arrTags);
-    });
-    
-    // use reduce to 
-    
-    let tags = _.reduce(newTags,function(prev,curr){
-              console.log(prev);
-              // we want to check the conditions that the tag exist if it doesnt we'll set it equal to one
-              // if it does exist we want to create the key in our object and increment by 1 eveytime we hit the tag
-              if(prev[curr] === undefined){
-                  prev[curr] = 1;
-              } else {
-                  prev[curr] += 1;
-              } return prev;
-    },{});
-    
-    
-    // create a newArray and iterate over our tags object to make our object an array by pushing it
-    var newArray = [];
-    _.each(tags,function(count,word){
-       newArray.push([word,count]);
-    });
-    
-    // sort our array from highest to lowest by using b - a
-    newArray.sort(function(a,b){
-      return b[1] - a[1];
-    });
-    
-    
-    // console.log(newArray);
-    // create a new array to push the sorted array into that array
-    var sortedArray = [];
-    // loop through array to keep the first three elements
-    for(var i = 0; i < 3; i++){
-        sortedArray.push(newArray[i][0]);
-        // return our new array with the top three tags
-    } return sortedArray;
-    
-    };
-    
-    
-    
-    
-    
+    let topThreeTags = function(arr){
+  
+        let tagArr = []
+        
+        _.forEach(arr,function(personObj){
+          personObj= _.forEach(personObj.tags,function(tag){
+            tagArr.push(tag)
+          })
+        })
+        
+        let tagCounterObj = _.reduce(tagArr,function(countObj, tag){
+          if(countObj[tag]){
+            countObj[tag]++
+          } else {
+            countObj[tag] = 1
+          }
+          return countObj
+        }, {})
+      
+        let arr1 = []
+        for(let key in tagCounterObj){
+          arr1.push([key, tagCounterObj[key]])
+        }
+        arr1.sort((a, b) => b[1] - a[1]);
+      
+        return [arr1[0][0], arr1[1][0], arr1[2][0]]
+      }
     
     var genderCount = function(array){
       
