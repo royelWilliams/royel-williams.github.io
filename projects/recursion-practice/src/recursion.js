@@ -134,16 +134,24 @@ return string
   return string.charAt(string.length -1) + reverse (string.substring(0,string.length -1))
 };
 // 10. Write a function that determines if a string is a palindrome.
-// var palindrome = function(string) {
-//   // base 
-// if( string === 12){
-//   return true;
-// }
+var palindrome = function(string) {
+ // base 
+ if(string.length === 1){
+  // a = a its the same letter so it will repeat itself so you need at least one letter 
+  return true;
+  }
+  //if(string.length === 2){
+    //return string[0] === string[1];
+ // }
+  var noSpace = string.replace(/\s/g,"").toLowerCase();
+  if(noSpace[0] === noSpace.slice(-1)){
+  return palindrome(noSpace.slice(1,-1));
+  } 
 
-//   // recursion 
-//   if(string === string.reverse())
-// };
 
+ // recrusion 
+  return false;
+};
 // 11. Write a function that returns the remainder of x divided by y without using the
 // modulo (%) operator.
 // modulo(5,2) // 1
@@ -211,14 +219,12 @@ var createArray = function(str){
 // 17. Reverse the order of an array
 var reverseArr = function (array) {
   // base 
-if( array.length === 0){
-  return  reverseArr
-}
+if (array.length === 1) return [array[0]];
 
-  // recursion 
-
-return array.reverse()
-
+// recrusion
+  var list = reverseArr(array.slice(1, array.length));
+  list.push(array[0]);
+  return list
 };
 
 // 18. Create a new array with a given value and length.
@@ -322,7 +328,20 @@ var capitalizeWords = function(input) {
 
 // 27. Given an array of strings, capitalize the first letter of each index.
 // capitalizeFirst(['car', 'poop', 'banana']); // ['Car', 'Poop', 'Banana']
-var capitalizeFirst = function(array) {
+var capitalizeFirst = function(array, index = 0) {
+  // base 
+  if (!array.length) return 'Empty array';
+  if (index === array.length) return array;
+  if (array[index].length) {
+  
+    const [first, ...rest] = array[index];
+
+    array[index] = `${first.toUpperCase()}${rest.join('')}`;
+  
+  }
+
+// recrusion
+  return capitalizeFirst(array, ++index);
 };
 
 // 28. Return the sum of all even numbers in an object containing nested objects.
@@ -340,19 +359,34 @@ var nestedEvenSum = function(obj) {
 // 29. Flatten an array containing nested arrays.
 // Example: flatten([1,[2],[3,[[4]]],5]); // [1,2,3,4,5]
 var flatten = function(arrays) {
+
 };
 
 // 30. Given a string, return an object containing tallies of each letter.
 // letterTally('potato'); // {'p':1, 'o':2, 't':2, 'a':1}
-var letterTally = function(str, obj) {
+var letterTally = function(str, obj = {}) {
+  if (str.length === 0) return obj;
+  letterTally(str.substring(1), obj);
+  if (obj[str[0]] === undefined) {
+    obj[str[0]] = 1;
+  } else {
+    obj[str[0]] += 1;
+  }
+  return obj;
 };
-
 // 31. Eliminate consecutive duplicates in a list.  If the list contains repeated
 // elements they should be replaced with a single copy of the element. The order of the
 // elements should not be changed.
 // Example: compress([1, 2, 2, 3, 4, 4, 5, 5, 5]) // [1, 2, 3, 4, 5]
 // Example: compress([1, 2, 2, 3, 4, 4, 2, 5, 5, 5, 4, 4]) // [1, 2, 3, 4, 2, 5, 4]
 var compress = function(list) {
+  if (list.length === 0) return [];
+  var res = compress(list.slice(1));
+  if (list[0] !== res[0]) {
+    res.unshift(list[0]);
+  }
+  return res;
+
 };
 
 // 32. Augment every element in a list with a new value where each element is an array
@@ -365,6 +399,13 @@ var augmentElements = function(array, aug) {
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
 var minimizeZeroes = function(array) {
+  if (array.length === 0) return [];
+  var list = minimizeZeroes(array.slice(1));
+  if ((array[0] === 0 ^ list[0] === 0) || array[0] !== 0) {
+    list.unshift(array[0]);
+  }
+  return list;
+
 };
 
 // 34. Alternate the numbers in an array between positive and negative regardless of
@@ -372,7 +413,20 @@ var minimizeZeroes = function(array) {
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
 var alternateSign = function(array) {
-
+  if (array.length === 0) return [];
+  var list = alternateSign(array.slice(0, array.length-1));
+  var lng = array.length;
+  if (lng%2 === 0) {
+    if (array[lng-1] > 0) {
+      array[lng-1] = -array[lng-1];
+    }
+  } else {
+    if (array[lng-1] < 0) {
+      array[lng-1] = -array[lng-1];
+    }
+  }
+  list.push(array[lng-1]);
+  return list;
 
 };
 
