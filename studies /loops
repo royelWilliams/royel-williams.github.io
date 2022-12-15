@@ -1,0 +1,50 @@
+/**
+*LOOP 
+*
+*
+*WHAT IS A LOOP???
+*Loops are used in JavaScript to perform repeated tasks based on a condition.Conditions typically 
+*return true or false .A loop will continue running until the defined condition returns false .
+*
+*
+*WHY ARE LOOPS IMPORTANT???
+*JavaScript loops provide a quick and easy method of doing something repeatedly.
+ They are used to repeat an action number of times without having to repeat the same line of code.
+*
+*
+*BASIC FOR LOOPS
+*
+*when making a loop you want to focus on declaration. using a variable then following the basic stepts of 
+* defining where the loop starts, where the loop stops, and if the loop will be itterating up or down and by what incriment 
+*for(var i = 0 ; i <= 12;i++)=> going up 
+* for(var i = 0 ; i <= 12;i--)=> going down 
+*
+*
+*
+*
+*FOR IN LOOPS
+*
+* We tend to use for in loops when going through objects 
+*
+*when writing a for in loop you want to call the loop using for declare a variable have key in object 
+* the key part can be changed if it is what you wish 
+*const capitals = {
+* a:"allu",
+* b:"bee",
+* c:"carmen"};
+* for(var key in capitals){
+* }
+*
+* THE WHILE LOOP 
+* although it is not as common as the other loops the while loop is also used through Javascript 
+*Use a while loop when asking for user input.They will alo continue exiting the block of code as long as the code is true 
+* Use a while loop when the increment value is nonstandard.
+*while(x<145){
+* count ++ // make sure to incriment x so the the loop will eventually stop 
+* }
+* results to the loop going on and on until whatever the number x is happens to be greater than the number 145
+*
+*
+*
+*
+*/

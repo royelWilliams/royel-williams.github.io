@@ -1,0 +1,58 @@
+/**
+*
+*FUNCTIONS 
+*
+*WHAT IS A FUNCTION???
+*
+*In JavaScript, a function allows you to define a block of code, give it a name and then execute it as many times as you want.
+* A JavaScript function can be defined using function keyword.
+*
+*
+*WHY ARE FUNCTIONS IMPORTANT???
+*
+*Functions enable programmers to break down or decompose a problem into smaller chunks, each of which performs a particular task. Once a function is created, 
+* the details of how it works can almost be forgotten about.
+*
+* A function is made with the basics of  about 5 - 7 simple parts 
+*
+*Function declaration  - by writing function you are making a declaration
+*
+*Function name - a name that has to do with the function
+*
+*argument / parameter - a name variable passed in to represent 
+*the arguments that will be passed in later 
+*
+*Function body - the main code of the  function
+*
+* Return statement - ends the execution of a function, and returns control to the calling function
+*
+*Call & arguments that will be passed in -  to call the name of the
+* function and pass in values into the parameter 
+*Example:
+*
+*function objectValues(object) {
+*    //create a bin to push keys 
+*   var arr = [];
+*   // for in loop to go through the object 
+* for(var key in object){
+*    // push the key out of the object 
+*   arr.push(object[key]);
+*    return arr;
+* }
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*/
